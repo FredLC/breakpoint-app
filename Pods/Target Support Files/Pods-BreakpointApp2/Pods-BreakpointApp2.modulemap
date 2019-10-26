@@ -1,0 +1,6 @@
+framework module Pods_BreakpointApp2 {
+  umbrella header "Pods-BreakpointApp2-umbrella.h"
+
+  export *
+  module * { export * }
+}

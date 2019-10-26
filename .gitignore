@@ -23,6 +23,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+BreakpointApp2/GoogleService-Info.plist
 
 ### Xcode Patch ###
 *.xcodeproj/*
