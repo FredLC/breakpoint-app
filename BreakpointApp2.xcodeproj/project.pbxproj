@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4815B75323A9319E00762449 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815B75223A9319E00762449 /* FeedCell.swift */; };
+		4815B75523A939C300762449 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815B75423A939C300762449 /* Message.swift */; };
 		48369CB62360EFB300929D9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48369CB52360EFB300929D9E /* AppDelegate.swift */; };
 		48369CB82360EFB300929D9E /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48369CB72360EFB300929D9E /* FeedVC.swift */; };
 		48369CBA2360EFB300929D9E /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48369CB92360EFB300929D9E /* GroupsVC.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		4815B75223A9319E00762449 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		4815B75423A939C300762449 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		48369CB22360EFB300929D9E /* BreakpointApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakpointApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48369CB52360EFB300929D9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48369CB72360EFB300929D9E /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		48369CCB2360EFDC00929D9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4815B75423A939C300762449 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				48369CB82360EFB300929D9E /* FeedVC.swift in Sources */,
 				48F9C38D23649FC700FBCFD8 /* DataService.swift in Sources */,
 				48F9C3952364A78A00FBCFD8 /* InsetTextField.swift in Sources */,
+				4815B75523A939C300762449 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
