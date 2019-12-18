@@ -18,6 +18,7 @@
 		48369CCF2360F0E900929D9E /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48369CCE2360F0E900929D9E /* ShadowView.swift */; };
 		487C8B7423A84B9F00581A98 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C8B7323A84B9F00581A98 /* UIViewExt.swift */; };
 		48B8019323AAC1C90049C035 /* CreateGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B8019223AAC1C90049C035 /* CreateGroupVC.swift */; };
+		48B8019523AAC6340049C035 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B8019423AAC6340049C035 /* UserCell.swift */; };
 		48C1DA2E23A832BB00AA0BA5 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1DA2D23A832BB00AA0BA5 /* MeVC.swift */; };
 		48C1DA3023A838CC00AA0BA5 /* CreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1DA2F23A838CC00AA0BA5 /* CreatePostVC.swift */; };
 		48F9C38B23649BF800FBCFD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F9C38A23649BF700FBCFD8 /* GoogleService-Info.plist */; };
@@ -43,6 +44,7 @@
 		48369CCE2360F0E900929D9E /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		487C8B7323A84B9F00581A98 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		48B8019223AAC1C90049C035 /* CreateGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupVC.swift; sourceTree = "<group>"; };
+		48B8019423AAC6340049C035 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		48C1DA2D23A832BB00AA0BA5 /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		48C1DA2F23A838CC00AA0BA5 /* CreatePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostVC.swift; sourceTree = "<group>"; };
 		48F9C38A23649BF700FBCFD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				48369CCE2360F0E900929D9E /* ShadowView.swift */,
 				48F9C3942364A78A00FBCFD8 /* InsetTextField.swift */,
 				4815B75223A9319E00762449 /* FeedCell.swift */,
+				48B8019423AAC6340049C035 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				48F9C3932364A75200FBCFD8 /* LoginVC.swift in Sources */,
 				48369CB62360EFB300929D9E /* AppDelegate.swift in Sources */,
 				48F9C38F2364A0DE00FBCFD8 /* AuthService.swift in Sources */,
+				48B8019523AAC6340049C035 /* UserCell.swift in Sources */,
 				48B8019323AAC1C90049C035 /* CreateGroupVC.swift in Sources */,
 				48F9C3912364A74600FBCFD8 /* AuthVC.swift in Sources */,
 				48C1DA3023A838CC00AA0BA5 /* CreatePostVC.swift in Sources */,
