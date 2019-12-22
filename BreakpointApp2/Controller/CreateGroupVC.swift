@@ -17,23 +17,39 @@ class CreateGroupVC: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    var emailArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        addMemberTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        if addMemberTextField.text == "" {
+            emailArray = []
+            tableView.reloadData()
+        } else {
+            DataService.instance.getEmail(forSearchQuery: addMemberTextField.text!) { (returnedArray) in
+                self.emailArray = returnedArray
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension CreateGroupVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return emailArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,9 +57,11 @@ extension CreateGroupVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let profileImage = UIImage(named: "defaultProfileImage")
-        cell.configureCell(profileImage: profileImage!, email: "joanna@pizza.ca", isSelected: true)
+        cell.configureCell(profileImage: profileImage!, email: emailArray[indexPath.row], isSelected: true)
         return cell
     }
     
     
 }
+
+
