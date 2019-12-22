@@ -18,12 +18,18 @@ class CreateGroupVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var emailArray = [String]()
+    var chosenUsersArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         addMemberTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        doneButton.isHidden = true
     }
     
     @objc func textFieldDidChange() {
@@ -59,6 +65,23 @@ extension CreateGroupVC: UITableViewDelegate, UITableViewDataSource {
         let profileImage = UIImage(named: "defaultProfileImage")
         cell.configureCell(profileImage: profileImage!, email: emailArray[indexPath.row], isSelected: true)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? UserCell else { return }
+        if !chosenUsersArray.contains(cell.emailLabel.text!) {
+            chosenUsersArray.append(cell.emailLabel.text!)
+            addMemberLabel.text = chosenUsersArray.joined(separator: ", ")
+            doneButton.isHidden = false
+        } else {
+            chosenUsersArray = chosenUsersArray.filter({ $0 != cell.emailLabel.text! })
+            if chosenUsersArray.count >= 1 {
+                addMemberLabel.text = chosenUsersArray.joined(separator: ", ")
+            } else {
+                addMemberLabel.text = "add member"
+                doneButton.isHidden = true
+            }
+        }
     }
     
     
