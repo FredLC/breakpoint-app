@@ -12,10 +12,22 @@ class GroupsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var groupsArray = [Group]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DataService.instance.REF_GROUPS.observe(.value) { (snapShot) in
+            DataService.instance.getAllGroups(handler: { (returnedGroupsArray) in
+                self.groupsArray = returnedGroupsArray
+                self.tableView.reloadData()
+            })
+        }
     }
 
 
@@ -23,14 +35,15 @@ class GroupsVC: UIViewController {
 
 extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return groupsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell") as? GroupCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as? GroupCell else {
             return UITableViewCell()
         }
-        cell.configureCell(title: "Le group a Joe", description: "Joe Mambre", membersCount: 3)
+        let group = groupsArray[indexPath.row]
+        cell.configureCell(title: group.title, description: group.description, membersCount: group.memberCount)
         return cell
     }
     
