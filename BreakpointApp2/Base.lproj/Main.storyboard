@@ -230,7 +230,7 @@
         <!--Group FeedVC-->
         <scene sceneID="VkM-C1-LvX">
             <objects>
-                <viewController id="tSr-Ya-nYo" customClass="GroupFeedVC" customModule="BreakpointApp2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupFeedVC" id="tSr-Ya-nYo" customClass="GroupFeedVC" customModule="BreakpointApp2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2jS-ka-iJd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
