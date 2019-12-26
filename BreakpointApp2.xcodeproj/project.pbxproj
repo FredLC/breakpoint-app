@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48122A0B23B574BF001FBF26 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48122A0A23B574BF001FBF26 /* RoundedImageView.swift */; };
 		4815B75323A9319E00762449 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815B75223A9319E00762449 /* FeedCell.swift */; };
 		4815B75523A939C300762449 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4815B75423A939C300762449 /* Message.swift */; };
 		48369CB62360EFB300929D9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48369CB52360EFB300929D9E /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48122A0A23B574BF001FBF26 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		4815B75223A9319E00762449 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		4815B75423A939C300762449 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		48369CB22360EFB300929D9E /* BreakpointApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakpointApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 				48B8019423AAC6340049C035 /* UserCell.swift */,
 				48E27D3723B2595D006A6B38 /* GroupCell.swift */,
 				488B67FE23B3EEDD0043486D /* GroupFeedCell.swift */,
+				48122A0A23B574BF001FBF26 /* RoundedImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				488B680123B414610043486D /* UIViewControllerExt.swift in Sources */,
 				48369CBA2360EFB300929D9E /* GroupsVC.swift in Sources */,
 				48F9C3932364A75200FBCFD8 /* LoginVC.swift in Sources */,
+				48122A0B23B574BF001FBF26 /* RoundedImageView.swift in Sources */,
 				48369CB62360EFB300929D9E /* AppDelegate.swift in Sources */,
 				488B67FD23B3EEBC0043486D /* GroupFeedVC.swift in Sources */,
 				48F9C38F2364A0DE00FBCFD8 /* AuthService.swift in Sources */,
