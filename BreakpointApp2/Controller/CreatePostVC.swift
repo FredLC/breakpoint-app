@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class CreatePostVC: UIViewController {
 
@@ -25,6 +26,12 @@ class CreatePostVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.getProfilePictureUrl(forUID: Auth.auth().currentUser!.uid) { (returnedImageUrl) in
+            let imageString = returnedImageUrl
+            let imageUrl = URL(string: imageString)
+            let placeholder = UIImage(named: "defaultProfileImage")
+            self.profileImage.kf.setImage(with: imageUrl, placeholder: placeholder)
+        }
     }
     
     @IBAction func sendButtonPressed(_ sender: Any) {

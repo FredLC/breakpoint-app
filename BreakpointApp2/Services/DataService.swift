@@ -51,6 +51,33 @@ class DataService {
         }
     }
     
+    func getAllUids(handler: @escaping (_ uids: [String]) -> ()) {
+        var uids = [String]()
+        REF_USERS.observe(.value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                let uid = user.key
+                uids.append(uid)
+            }
+            handler(uids)
+        }
+    }
+    
+    func getProfilePictureUrl(forUID uid: String, handler: @escaping (_ profilePictureUrl: String) -> ()) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                if user.key == uid {
+                    if user.childSnapshot(forPath: "profileImageUrl").exists() {
+                        handler(user.childSnapshot(forPath: "profileImageUrl").value as! String)
+                    } else {
+                        handler("defaultProfileImage")
+                    }
+                }
+            }
+        }
+    }
+    
     func uploadPost(withMessage message: String, withUid uid: String, withGroupKey groupKey: String?, sendComplete: @escaping (_ status: Bool) -> ()) {
         if groupKey != nil {
             REF_GROUPS.child(groupKey!).child("messages").childByAutoId().updateChildValues(["content": message, "senderId": uid])

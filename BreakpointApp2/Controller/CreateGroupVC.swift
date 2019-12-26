@@ -77,8 +77,10 @@ extension CreateGroupVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserCell else {
             return UITableViewCell()
         }
-        let profileImage = UIImage(named: "defaultProfileImage")
-        cell.configureCell(profileImage: profileImage!, email: emailArray[indexPath.row], isSelected: true)
+        DataService.instance.getAllUids { (returnedUids) in
+            let uid = returnedUids[indexPath.row]
+            cell.configureCell(uid: uid, email: self.emailArray[indexPath.row], isSelected: true)
+        }
         return cell
     }
     

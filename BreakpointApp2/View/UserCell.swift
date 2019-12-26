@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class UserCell: UITableViewCell {
     
@@ -16,8 +18,17 @@ class UserCell: UITableViewCell {
     
     var showing = false
     
-    func configureCell(profileImage image: UIImage, email: String, isSelected: Bool) {
-        self.profileImage.image = image
+    func configureCell(uid: String, email: String, isSelected: Bool) {
+        DataService.instance.getProfilePictureUrl(forUID: uid) { (returnedImageUrl) in
+            if returnedImageUrl == "defaultProfileImage" {
+                self.profileImage.image = UIImage(named: returnedImageUrl)
+            } else {
+                let imageString = returnedImageUrl
+                let imageUrl = URL(string: imageString)
+                let placeholder = UIImage(named: "defaultProfileImage")
+                self.profileImage.kf.setImage(with: imageUrl, placeholder: placeholder)
+            }
+        }
         self.emailLabel.text = email
         if isSelected {
             checkImage.isHidden = false

@@ -79,7 +79,7 @@ extension GroupFeedVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupFeedCell", for: indexPath) as? GroupFeedCell else { return UITableViewCell() }
         let message = groupMessages[indexPath.row]
         DataService.instance.getUsername(forUID: message.senderId) { (email) in
-            cell.configureCell(profileImage: UIImage(named: "defaultProfileImage")!, email: email, post: message.content)
+            cell.configureCell(uid: message.senderId, email: email, post: message.content)
         }
         return cell
     }

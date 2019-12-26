@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class FeedCell: UITableViewCell {
 
@@ -14,8 +16,17 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
-    func configureCell(profileImage: UIImage, email: String, content: String) {
-        self.profileImage.image = profileImage
+    func configureCell(uid: String, email: String, content: String) {
+        DataService.instance.getProfilePictureUrl(forUID: uid) { (returnedUrl) in
+            if returnedUrl == "defaultProfileImage" {
+                self.profileImage.image = UIImage(named: returnedUrl)
+            } else {
+                let imageString = returnedUrl
+                let imageUrl = URL(string: imageString)
+                let image = UIImage(named: "defaultProfileImage")
+                self.profileImage.kf.setImage(with: imageUrl, placeholder: image)
+            }
+        }
         self.emailLabel.text = email
         self.contentLabel.text = content
     }

@@ -25,6 +25,12 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.getProfilePictureUrl(forUID: Auth.auth().currentUser!.uid) { (returnedImageUrl) in
+            let imageString = returnedImageUrl
+            let imageUrl = URL(string: imageString)
+            let placeholder = UIImage(named: "defaultProfileImage")
+            self.profileImage.kf.setImage(with: imageUrl, placeholder: placeholder)
+        }
     }
     
     @objc func handleSelectProfileImage() {
