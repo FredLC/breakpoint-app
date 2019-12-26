@@ -8,4 +8,8 @@ target 'BreakpointApp2' do
   # Pods for BreakpointApp2
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+
+  pod 'Kingfisher', '~> 5.0'
 end

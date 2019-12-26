@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
-class MeVC: UIViewController {
+class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
@@ -17,11 +18,74 @@ class MeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImage)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLabel.text = Auth.auth().currentUser?.email
+    }
+    
+    @objc func handleSelectProfileImage() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            profileImage.image = selectedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+        guard let data = profileImage.image?.jpegData(compressionQuality: 1.0) else {
+            return
+        }
+        
+        let imageName = UUID().uuidString
+        let imageReference = Storage.storage().reference().child(imageName)
+        
+        imageReference.putData(data, metadata: nil) { (metadata, error) in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+                return
+            }
+            
+            imageReference.downloadURL(completion: { (url, error) in
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                
+                guard let url = url else { return }
+                let urlString = url.absoluteString
+                let dataReference = Firestore.firestore().collection("imagesCollection").document()
+                let documentId = dataReference.documentID
+                let data = [
+                    "uid": documentId,
+                    "imageUrl": urlString
+                ]
+                
+                dataReference.setData(data, completion: { (error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    print("Successfully saved image to database")
+                    DataService.instance.REF_USERS.child(Auth.auth().currentUser!.uid).updateChildValues(["profileImageUrl": urlString])
+                })
+            })
+        }
+        
     }
 
     @IBAction func logoutButtonPressed(_ sender: Any) {
