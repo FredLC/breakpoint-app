@@ -117,6 +117,22 @@ class DataService {
         }
     }
     
+    func getAllMessages(fromCurrentUser userId: String, handler: @escaping (_ messages: [Message]) -> ()) {
+        var messagesArray = [Message]()
+        REF_FEED.observeSingleEvent(of: .value) { (feedSnapshot) in
+            guard let feedSnapshot = feedSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for message in feedSnapshot {
+                let content = message.childSnapshot(forPath: "content").value as! String
+                let senderId = message.childSnapshot(forPath: "senderId").value as! String
+                let message = Message(content: content, senderId: senderId)
+                if senderId == userId {
+                    messagesArray.append(message)
+                }
+            }
+            handler(messagesArray)
+        }
+    }
+    
     func getEmail(forSearchQuery query: String, handler: @escaping (_ emails: [String]) -> ()) {
         var emailArray = [String]()
         REF_USERS.observe(.value) { (userSnapshot) in
@@ -150,9 +166,11 @@ class DataService {
             var emailsArray = [String]()
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for user in userSnapshot {
-                let email = user.childSnapshot(forPath: "email").value as! String
-                if group.members.contains(user.key) {
-                    emailsArray.append(email)
+                if user.childSnapshot(forPath: "email").exists() {
+                    let email = user.childSnapshot(forPath: "email").value as! String
+                    if group.members.contains(user.key) {
+                        emailsArray.append(email)
+                    }
                 }
             }
             handler(emailsArray)

@@ -22,6 +22,13 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImage)))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DataService.instance.getAllMessages(fromCurrentUser: Auth.auth().currentUser!.uid) { (returnedMessages) in
+            print(returnedMessages)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLabel.text = Auth.auth().currentUser?.email
