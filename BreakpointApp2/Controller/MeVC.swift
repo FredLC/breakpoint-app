@@ -16,16 +16,21 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var messagesArray = [Message]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImage)))
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DataService.instance.getAllMessages(fromCurrentUser: Auth.auth().currentUser!.uid) { (returnedMessages) in
-            print(returnedMessages)
+            self.messagesArray = returnedMessages
+            self.tableView.reloadData()
         }
     }
     
@@ -114,6 +119,23 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
         }
         logoutPopup.addAction(logoutAction)
         present(logoutPopup, animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension MeVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messagesArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "meVCPostCell", for: indexPath) as? MeVCPostCell else { return UITableViewCell() }
+        let message = messagesArray[indexPath.row]
+        DataService.instance.getUsername(forUID: message.senderId) { (email) in
+            cell.configureCell(email: email, post: message.content)
+        }
+        return cell
     }
     
     

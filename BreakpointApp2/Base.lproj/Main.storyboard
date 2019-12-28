@@ -770,19 +770,57 @@
                                     <constraint firstItem="f02-EY-V4L" firstAttribute="centerX" secondItem="9gu-gY-G9j" secondAttribute="centerX" id="wY1-Kv-OlI"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LtB-57-jxo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LtB-57-jxo">
                                 <rect key="frame" x="0.0" y="430" width="414" height="466"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="Dkx-wD-aUV">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="meVCPostCell" rowHeight="100" id="c4m-Hx-TcY" customClass="MeVCPostCell" customModule="BreakpointApp2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dkx-wD-aUV" id="uIU-db-H0z">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c4m-Hx-TcY" id="TmQ-Kw-XHi">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="4Au-Y4-nBA" customClass="RoundedImageView" customModule="BreakpointApp2" customModuleProvider="target">
+                                                    <rect key="frame" x="30" y="20" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="dbc-A7-eT0"/>
+                                                        <constraint firstAttribute="height" constant="60" id="lg3-5K-r8Q"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-nE-mqX">
+                                                    <rect key="frame" x="110" y="21" width="274" height="58"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user@breakpoint.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="186-Tg-Whq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="206" height="20"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
+                                                            <color key="textColor" red="0.015686274510000001" green="0.6705882353" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="RWD-BC-qiW">
+                                                            <rect key="frame" x="0.0" y="46" width="29" height="12"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                                                            <color key="textColor" red="0.015686274510000001" green="0.6705882353" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zfK-nE-mqX" firstAttribute="leading" secondItem="4Au-Y4-nBA" secondAttribute="trailing" constant="20" id="2dj-xD-n2f"/>
+                                                <constraint firstItem="4Au-Y4-nBA" firstAttribute="leading" secondItem="TmQ-Kw-XHi" secondAttribute="leadingMargin" constant="10" id="70g-P3-a9U"/>
+                                                <constraint firstItem="zfK-nE-mqX" firstAttribute="top" secondItem="TmQ-Kw-XHi" secondAttribute="topMargin" constant="10" id="9Gn-U2-yO1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zfK-nE-mqX" secondAttribute="trailing" constant="10" id="MYd-JC-Asa"/>
+                                                <constraint firstItem="4Au-Y4-nBA" firstAttribute="centerY" secondItem="TmQ-Kw-XHi" secondAttribute="centerY" id="bkq-4e-Ur6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zfK-nE-mqX" secondAttribute="bottom" constant="10" id="cBU-3U-RmW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="emailLabel" destination="186-Tg-Whq" id="7wi-Ik-dln"/>
+                                            <outlet property="postLabel" destination="RWD-BC-qiW" id="3vp-g1-JNW"/>
+                                            <outlet property="profileImage" destination="4Au-Y4-nBA" id="fPx-V5-e3g"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
