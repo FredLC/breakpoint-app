@@ -6,7 +6,11 @@ target 'BreakpointApp2' do
   use_frameworks!
 
   # Pods for BreakpointApp2
+  pod 'AppAuth','~> 1.2.0'
   pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
   pod 'Firebase/Database'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'

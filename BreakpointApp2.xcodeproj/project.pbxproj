@@ -206,6 +206,7 @@
 				48369CAF2360EFB300929D9E /* Frameworks */,
 				48369CB02360EFB300929D9E /* Resources */,
 				0CAB5368AFD27F8F745A2C99 /* [CP] Embed Pods Frameworks */,
+				013AB5DB2F2884C94337E991 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +265,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		013AB5DB2F2884C94337E991 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BreakpointApp2/Pods-BreakpointApp2-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BreakpointApp2/Pods-BreakpointApp2-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BreakpointApp2/Pods-BreakpointApp2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0CAB5368AFD27F8F745A2C99 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

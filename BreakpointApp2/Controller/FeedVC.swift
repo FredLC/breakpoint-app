@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedVC: UIViewController {
 
@@ -40,9 +41,8 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let message = messageArray[indexPath.row]
-        DataService.instance.getUsername(forUID: message.senderId) { (returnedUsername) in
-            cell.configureCell(uid: message.senderId, email: returnedUsername, content: message.content)
-        }
+        guard let email = Auth.auth().currentUser?.email else { return UITableViewCell() }
+        cell.configureCell(uid: message.senderId, email: email, content: message.content)
         return cell
     }
     

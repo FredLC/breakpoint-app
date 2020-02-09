@@ -947,6 +947,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zSe-gQ-JiU"/>
                     </view>
+                    <connections>
+                        <outlet property="googleSignInButton" destination="zcR-f3-a1I" id="ns3-mY-xrH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1z-Tz-73Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

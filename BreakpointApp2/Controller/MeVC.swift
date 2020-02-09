@@ -132,9 +132,8 @@ extension MeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "meVCPostCell", for: indexPath) as? MeVCPostCell else { return UITableViewCell() }
         let message = messagesArray[indexPath.row]
-        DataService.instance.getUsername(forUID: message.senderId) { (email) in
-            cell.configureCell(email: email, post: message.content)
-        }
+        guard let email = Auth.auth().currentUser?.email else { return UITableViewCell() }
+        cell.configureCell(email: email, post: message.content)
         return cell
     }
     

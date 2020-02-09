@@ -24,6 +24,7 @@ class AuthService {
             DataService.instance.createDBUser(uid: user.uid, userData: userData)
             userCreationComplete(true, nil)
         }
+        
     }
     
     
